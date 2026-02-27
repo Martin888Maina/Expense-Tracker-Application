@@ -1,0 +1,350 @@
+/* ============================================================
+   Global Styles — Expense Tracker
+   Imports Bootstrap first, then applies custom design tokens
+   and component overrides on top of it.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+/* --- Design Tokens ----------------------------------------- */
+:root {
+  /* Primary teal palette — finance-forward without looking generic */
+  --primary:        #0D9488;
+  --primary-dark:   #0f766e;
+  --primary-light:  #ccfbf1;
+  --primary-subtle: #f0fdfa;
+
+  /* Semantic status colours — kept distinct from the primary */
+  --success:  #16a34a;
+  --warning:  #f59e0b;
+  --danger:   #dc2626;
+  --info:     #0891b2;
+
+  /* Neutral greys for text and backgrounds */
+  --text-primary:   #1e293b;
+  --text-secondary: #64748b;
+  --text-muted:     #94a3b8;
+  --border-color:   #e2e8f0;
+  --bg-page:        #f8fafc;
+  --bg-card:        #ffffff;
+  --bg-sidebar:     #ffffff;
+
+  /* Dark mode values — toggled by [data-theme="dark"] on <html> */
+  --dark-bg-page:    #0f172a;
+  --dark-bg-card:    #1e293b;
+  --dark-bg-sidebar: #1e293b;
+  --dark-text:       #e2e8f0;
+  --dark-border:     #334155;
+
+  /* Shape & shadow */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+  /* Layout dimensions */
+  --sidebar-width:          240px;
+  --sidebar-collapsed-width: 70px;
+  --navbar-height:          60px;
+}
+
+/* --- Base Reset -------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-page);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Bootstrap Overrides ----------------------------------- */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.text-primary { color: var(--primary) !important; }
+.bg-primary    { background-color: var(--primary) !important; }
+.border-primary{ border-color: var(--primary) !important; }
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(13, 148, 136, 0.2);
+}
+
+/* --- Cards ------------------------------------------------- */
+.card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--bg-card);
+}
+
+/* --- Layout Shell ------------------------------------------ */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  width: var(--sidebar-width);
+  min-height: 100vh;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: width 0.25s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.app-main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.25s ease;
+}
+
+.app-topbar {
+  height: var(--navbar-height);
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  gap: 1rem;
+}
+
+.app-content {
+  flex: 1;
+  padding: 1.75rem 1.5rem;
+}
+
+/* --- Sidebar Nav Links ------------------------------------- */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--primary);
+}
+
+.sidebar-nav {
+  padding: 0.75rem 0.5rem;
+  list-style: none;
+  margin: 0;
+}
+
+.sidebar-nav-item {
+  margin-bottom: 2px;
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.sidebar-nav-link:hover {
+  background-color: var(--primary-subtle);
+  color: var(--primary);
+}
+
+.sidebar-nav-link.active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.sidebar-nav-link i {
+  font-size: 1.1rem;
+  width: 1.25rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* --- KPI Summary Cards ------------------------------------- */
+.stat-card {
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  background: var(--bg-card);
+  transition: box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.stat-value {
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* --- Page Header ------------------------------------------- */
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0.25rem 0 0 0;
+}
+
+/* --- Auth Pages -------------------------------------------- */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0fdfa 0%, #e6f7ff 100%);
+  padding: 1.5rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2.25rem 2rem;
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+/* --- Currency / Mono values -------------------------------- */
+.currency-value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+/* --- Utility helpers --------------------------------------- */
+.text-success-custom { color: var(--success); }
+.text-warning-custom { color: var(--warning); }
+.text-danger-custom  { color: var(--danger); }
+.bg-primary-subtle   { background-color: var(--primary-subtle); }
+
+/* --- Dark Mode --------------------------------------------- */
+[data-theme='dark'] {
+  --bg-page:    var(--dark-bg-page);
+  --bg-card:    var(--dark-bg-card);
+  --bg-sidebar: var(--dark-bg-sidebar);
+  --text-primary:   var(--dark-text);
+  --text-secondary: #94a3b8;
+  --border-color:   var(--dark-border);
+}
+
+[data-theme='dark'] body {
+  background-color: var(--dark-bg-page);
+  color: var(--dark-text);
+}
+
+[data-theme='dark'] .card,
+[data-theme='dark'] .app-topbar,
+[data-theme='dark'] .app-sidebar {
+  background-color: var(--dark-bg-card);
+  border-color: var(--dark-border);
+}
+
+/* --- Responsive: collapse sidebar on mobile ---------------- */
+@media (max-width: 768px) {
+  .app-sidebar {
+    width: 0;
+    transform: translateX(-100%);
+  }
+
+  .app-sidebar.open {
+    width: var(--sidebar-width);
+    transform: translateX(0);
+    box-shadow: var(--shadow-md);
+  }
+
+  .app-main {
+    margin-left: 0;
+  }
+}
