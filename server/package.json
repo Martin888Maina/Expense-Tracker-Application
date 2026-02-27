@@ -8,13 +8,19 @@
     "dev": "nodemon server.js",
     "seed": "node src/seeders/seed.js"
   },
-  "keywords": ["expense-tracker", "nodejs", "express", "sequelize"],
+  "keywords": [
+    "expense-tracker",
+    "nodejs",
+    "express",
+    "sequelize"
+  ],
   "author": "Martin888Maina",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
     "express-rate-limit": "^7.2.0",

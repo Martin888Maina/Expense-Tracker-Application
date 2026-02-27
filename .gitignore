@@ -1,3 +1,6 @@
+# Project guide — internal use only, not for the public repo
+claude.md
+
 # Dependencies
 node_modules/
 .pnp
