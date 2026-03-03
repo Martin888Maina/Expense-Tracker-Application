@@ -12,6 +12,7 @@ import BudgetsPage from './pages/BudgetsPage';
 import ReportsPage from './pages/ReportsPage';
 import CategoriesPage from './pages/CategoriesPage';
 import SettingsPage from './pages/SettingsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -38,8 +39,8 @@ function App() {
             {/* Redirect the root path to the dashboard */}
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-            {/* Catch-all for unknown routes */}
-            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            {/* Catch-all — show a proper 404 page instead of silently redirecting */}
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
 

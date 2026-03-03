@@ -1,5 +1,5 @@
 // ReportsPage.jsx — analytics page with date range selector, summary stats, charts, and CSV export
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Row, Col, Button, Alert, Spinner, Table } from 'react-bootstrap';
 import {
     ResponsiveContainer,
@@ -99,12 +99,12 @@ const ReportsPage = () => {
     const [error, setError] = useState(null);
     const [exporting, setExporting] = useState(false);
 
-    // Load report data initially on mount
-    const [initialLoad, setInitialLoad] = useState(false);
-    if (!initialLoad) {
-        setInitialLoad(true);
+    // Load report data when the component mounts — using useEffect avoids
+    // the render-phase side effect that the previous initialLoad flag caused
+    useEffect(() => {
         fetchReports(getPresetDates('month'));
-    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function fetchReports(params) {
         setLoading(true);

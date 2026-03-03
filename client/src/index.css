@@ -331,6 +331,79 @@ body {
   border-color: var(--dark-border);
 }
 
+/* --- Dark mode: form inputs, selects, modals, tables ------- */
+[data-theme='dark'] .form-control,
+[data-theme='dark'] .form-select {
+  background-color: #273549;
+  border-color: var(--dark-border);
+  color: var(--dark-text);
+}
+
+[data-theme='dark'] .form-control:focus,
+[data-theme='dark'] .form-select:focus {
+  background-color: #273549;
+  border-color: var(--primary);
+  color: var(--dark-text);
+}
+
+[data-theme='dark'] .form-control::placeholder {
+  color: #64748b;
+}
+
+[data-theme='dark'] .modal-content {
+  background-color: var(--dark-bg-card);
+  border-color: var(--dark-border);
+  color: var(--dark-text);
+}
+
+[data-theme='dark'] .modal-header,
+[data-theme='dark'] .modal-footer {
+  border-color: var(--dark-border);
+}
+
+[data-theme='dark'] .table {
+  color: var(--dark-text);
+}
+
+[data-theme='dark'] .table th,
+[data-theme='dark'] .table td {
+  border-color: var(--dark-border);
+}
+
+[data-theme='dark'] .table-hover > tbody > tr:hover > * {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme='dark'] .btn-light {
+  background-color: #334155;
+  border-color: #334155;
+  color: var(--dark-text);
+}
+
+[data-theme='dark'] .btn-outline-secondary {
+  color: #94a3b8;
+  border-color: #475569;
+}
+
+[data-theme='dark'] .btn-outline-secondary:hover {
+  background-color: #334155;
+  border-color: #475569;
+  color: var(--dark-text);
+}
+
+[data-theme='dark'] .dropdown-menu {
+  background-color: var(--dark-bg-card);
+  border-color: var(--dark-border);
+}
+
+[data-theme='dark'] .dropdown-item {
+  color: var(--dark-text);
+}
+
+[data-theme='dark'] .dropdown-item:hover {
+  background-color: #334155;
+}
+
 /* --- Responsive: collapse sidebar on mobile ---------------- */
 @media (max-width: 768px) {
   .app-sidebar {
@@ -346,5 +419,16 @@ body {
 
   .app-main {
     margin-left: 0;
+  }
+}
+
+/* --- Responsive: tighten content padding on small screens -- */
+@media (max-width: 576px) {
+  .app-content {
+    padding: 1.25rem 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.35rem;
   }
 }
