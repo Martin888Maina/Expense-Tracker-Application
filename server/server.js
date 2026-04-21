@@ -15,7 +15,7 @@ const startServer = async () => {
 
     // Sync models with the database — in development, alter:true keeps the schema up to date
     // without destroying existing data
-    await sequelize.sync({ alter: true });
+    await sequelize.sync({ alter: process.env.NODE_ENV !== 'production' });
     console.log('Database models synchronized.');
 
     app.listen(PORT, () => {
