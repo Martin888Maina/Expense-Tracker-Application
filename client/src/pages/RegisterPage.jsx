@@ -46,7 +46,7 @@ const RegisterPage = () => {
             <div className="auth-card">
                 <div className="auth-logo mb-1">
                     <i className="bi bi-piggy-bank-fill" />
-                    <span>ExpenseTracker</span>
+                    <span>Expense Tracker Application</span>
                 </div>
                 <p className="text-center mb-4" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
                     Create your free account

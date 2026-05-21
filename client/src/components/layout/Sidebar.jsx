@@ -41,7 +41,7 @@ const Sidebar = ({ isOpen, onClose }) => {
                 {/* Brand */}
                 <NavLink to="/dashboard" className="sidebar-brand" onClick={onClose}>
                     <i className="bi bi-piggy-bank-fill" style={{ fontSize: '1.3rem' }} />
-                    <span>ExpenseTracker</span>
+                    <span>Expense Tracker Application</span>
                 </NavLink>
 
                 {/* User info snippet */}
