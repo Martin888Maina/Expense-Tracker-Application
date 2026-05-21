@@ -274,16 +274,16 @@ body {
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #f0fdfa 0%, #e6f7ff 100%);
-  padding: 1.5rem;
+  padding: 2rem;
 }
 
 .auth-card {
   width: 100%;
-  max-width: 440px;
+  max-width: 560px;
   background: var(--bg-card);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  padding: 2.25rem 2rem;
+  padding: 3rem 3.5rem;
 }
 
 .auth-logo {
@@ -291,10 +291,20 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 800;
   color: var(--primary);
   margin-bottom: 0.25rem;
+}
+
+@media (max-width: 576px) {
+  .auth-card {
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+  }
+  .auth-logo {
+    font-size: 1.3rem;
+  }
 }
 
 /* --- Currency / Mono values -------------------------------- */
